@@ -1,0 +1,6 @@
+library(shiny)
+library(plotly)
+
+setwd("/cloud/project/result")
+
+world_data <- readRDS("data/world_data.RDS")

@@ -1,0 +1,27 @@
+---
+title: "Sources"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+"Desert horned lizard" by Marco Bellucci is licensed under CC BY 2.0
+
+"Christmas party animals" by MattysFlicks is licensed under CC BY 2.0
+
+"Angry Blue Eyed Grey Cat" by Felinest is licensed under CC BY 2.0
+
+"Birds" by Phil Fiddyment is licensed under CC BY 2.0
+
+"Fish Tank" by SupportPDX is licensed under CC BY 2.0
+
+"TURTLES!!!" by U.S. Geological Survey is licensed under CC BY 2.0
+
+"Rabbit" by KevinJump is licensed under CC BY 2.0
+
+
+
+
+

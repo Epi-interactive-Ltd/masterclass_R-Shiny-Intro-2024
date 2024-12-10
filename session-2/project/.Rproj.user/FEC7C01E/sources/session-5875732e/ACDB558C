@@ -1,0 +1,26 @@
+{
+    "id": "ACDB558C",
+    "path": "/cloud/project/examples/navlistPanel_app.R",
+    "project_path": "examples/navlistPanel_app.R",
+    "type": "r_source",
+    "hash": "0",
+    "contents": "",
+    "dirty": false,
+    "created": 1727807436574.0,
+    "source_on_save": false,
+    "relative_order": 2,
+    "properties": {
+        "source_window_id": "",
+        "Source": "Source",
+        "cursorPosition": "17,2",
+        "scrollLine": "0"
+    },
+    "folds": "39|33|51|2|\n53|34|63|2|\n",
+    "lastKnownWriteTime": 1727808252,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1727808252617,
+    "read_only": false,
+    "read_only_alternatives": []
+}

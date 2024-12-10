@@ -1,0 +1,64 @@
+
+shinyServer(function(input, output) {
+  
+  continent_data <- reactive({
+    world_data |>
+      filter(continent %in% input$continent)
+  })
+  
+  # creating a dynamic colour palette 
+  colorpal <- reactive({
+    colorNumeric(brewer.pal(5, "RdPu"), continent_data()[[var1()]])
+  })
+  
+  # create the base map here, add tiles and the base layer of country shapes
+  output$map <- renderLeaflet({
+    # browser()
+    m <- leaflet() %>%
+      addTiles() %>%
+      # Thunderforest.SpinalMap
+      # addProviderTiles(providers$Stadia.AlidadeSmooth) %>%
+      # addProviderTiles(providers$Esri.WorldGrayCanvas) %>%
+      addMarkers(lng = 174.821029,
+                 lat = -41.309602,
+                 popup = "Epi-interactive") %>%
+      addPolygons(data = continent_data(), group = "outlines", 
+                  stroke = T, weight = 0.5, color = "#444", opacity = 1, 
+                  fill = F)
+    m
+  })
+  
+  # when the continent data changes, redraw the highlighted shapes
+  observe({
+    pal <- colorpal()
+    var11 <- var1()
+    # browser()
+    out <- leafletProxy("map") %>%
+      clearGroup("highlight") %>%
+      addPolygons(data = continent_data(), group = "highlight", 
+                  stroke = T, weight = 1, color = "#444", opacity = 1,
+                  fillColor = ~pal(popDensity), fillOpacity = 0.8, popup = ~popupText)
+    # browser()
+  })
+  
+  # use a separate observe to show / hide the legend
+  observe({
+    pal <- colorpal()
+    
+    out <- leafletProxy("map") %>%
+      clearControls()
+    # browser()
+    if(input$show_legend) {
+      out <- out %>%
+        addLegend(position = "bottomright", pal = pal, values = continent_data()[[var1()]], title=var1())
+    }
+  })
+  
+  var1 <- reactiveVal({"popDensity"})
+  
+  observeEvent(input$variable, {
+    var <- input$variable
+    var1(var)
+  })
+  
+})

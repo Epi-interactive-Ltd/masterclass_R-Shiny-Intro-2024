@@ -1,0 +1,19 @@
+
+ui <- fluidPage(
+  titlePanel("Plotly Exercise"),
+  
+  sidebarLayout(
+    sidebarPanel(
+      selectInput("continent", "Continent",
+                  choices = unique(world_data$continent),
+                  selected = unique(world_data$continent),
+                  multiple = T)
+    ),
+    mainPanel(
+      wellPanel(
+        plotlyOutput("world_data_chart")
+      )
+    )
+  )
+  
+)

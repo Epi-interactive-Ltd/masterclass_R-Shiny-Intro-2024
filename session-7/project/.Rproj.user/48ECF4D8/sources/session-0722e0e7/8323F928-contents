@@ -1,0 +1,55 @@
+
+shinyServer(function(input, output) {
+  
+  # filter the data
+  continent_data <- reactive({
+    world_data |>
+      filter(continent %in% input$continent)
+  })
+  
+  # creating a dynamic colour palette 
+  colorpal <- reactive({
+    colorNumeric(brewer.pal(5, "RdPu"), continent_data()$popDensity)
+  })
+  
+  
+  # create the base map here, add tiles and the base layer of country shapes
+  output$map <- renderLeaflet({
+    leaflet() %>%
+      addProviderTiles(providers$Esri.WorldGrayCanvas) %>%
+      addMarkers(lng = 174.821029, lat = -41.309602, popup = "Epi-interactive Office!") %>%
+      addPolygons(data = continent_data(), group = "outlines", 
+                  stroke = T, weight = 1, color = "#444", opacity = 1, 
+                  fill = F)
+  })
+  
+  
+  # when the continent data changes, redraw the highlighted shapes
+  observe({
+    pal <- colorpal()
+    
+    out <- leafletProxy("map") %>%
+      clearGroup("highlight") %>%
+      addPolygons(data = continent_data(), group = "highlight", 
+                stroke = T, weight = 3, color = "#444", opacity = 1,
+                fillColor = ~pal(popDensity), fillOpacity = 0.8, popup = ~popupText)
+  })
+  
+  
+  # use a separate observe to show / hide the legend
+  observe({
+    pal <- colorpal()
+    
+    out <- leafletProxy("map") %>%
+      clearControls()
+    
+    if(input$show_legend) {
+      out <- out %>%
+        addLegend(position = "bottomright", pal = pal, values = continent_data()$popDensity)
+    }
+  })
+  
+  
+  
+  
+})

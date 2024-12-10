@@ -1,0 +1,26 @@
+{
+    "id": "4135D3A1",
+    "path": "/cloud/project/stage1/server.R",
+    "project_path": "stage1/server.R",
+    "type": "r_source",
+    "hash": "0",
+    "contents": "",
+    "dirty": false,
+    "created": 1708630641469.0,
+    "source_on_save": false,
+    "relative_order": 2,
+    "properties": {
+        "source_window_id": "",
+        "Source": "Source",
+        "cursorPosition": "34,14",
+        "scrollLine": "28"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1708637731,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1708637731143,
+    "read_only": false,
+    "read_only_alternatives": []
+}

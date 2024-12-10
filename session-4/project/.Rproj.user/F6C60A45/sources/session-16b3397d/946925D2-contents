@@ -1,0 +1,40 @@
+
+server <- function(input, output) {
+    setwd("/cloud/project/stage2")
+    
+    # modify your world_data here, as above   #
+    # world_data <- world_data %>% filter(...)      #
+    
+    
+    # create your filtered data reactive here...
+    
+    filtered_data <- reactive({
+      # Slider
+      data <- world_data %>%
+        filter(
+          Pop_Density >= input$slider[1],
+          Pop_Density <= input$slider[2],
+          status %in% input$status
+        )
+      # Contient
+      # if (!is.null(input$continent)) {
+      #   data <- data %>%
+      #     filter(continent %in% input$continent)
+      # }
+      # # Status
+      # if (!is.null(input$status)) {
+      #   data <- data %>%
+      #     filter(Status %in% input$status)
+      # }
+      return(data)
+    })
+        
+    # grouped_data <- NULL
+    
+    
+    output$world_data <- DT::renderDataTable({
+        datatable(filtered_data(),
+                  options = list(scrollX = TRUE)
+                  )
+    })
+}

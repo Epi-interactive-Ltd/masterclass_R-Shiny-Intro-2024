@@ -1,0 +1,26 @@
+{
+    "id": "7ECA3857",
+    "path": "/cloud/project/stage2/ui.R",
+    "project_path": "stage2/ui.R",
+    "type": "r_source",
+    "hash": "0",
+    "contents": "",
+    "dirty": false,
+    "created": 1712016766773.0,
+    "source_on_save": false,
+    "relative_order": 2,
+    "properties": {
+        "source_window_id": "",
+        "Source": "Source",
+        "cursorPosition": "9,14",
+        "scrollLine": "0"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1707783949,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1707783949,
+    "read_only": false,
+    "read_only_alternatives": []
+}

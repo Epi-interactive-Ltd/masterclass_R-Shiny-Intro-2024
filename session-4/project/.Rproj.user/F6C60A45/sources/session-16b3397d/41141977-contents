@@ -1,0 +1,46 @@
+library(shiny)
+
+ui <- fluidPage(
+
+    # Application title
+    titlePanel("Practising with data sources and processing"),
+
+    fluidRow(
+        column(3, 
+               wellPanel(
+                 h2("Filters"),
+                 # Insert filters here
+                 sliderInput(
+                   inputId = "slider",
+                   label = "Population Density:",
+                   min = min(world_data$Pop_Density, na.rm = TRUE),
+                   max = max(world_data$Pop_Density, na.rm = TRUE),
+                   value = c(min(world_data$Pop_Density, na.rm = TRUE), max(world_data$Pop_Density, na.rm = TRUE)),
+                   step = 100
+                 ),
+                 selectInput(
+                   inputId = "continent",
+                   label = "Continent:",
+                   choices = sort(unique(world_data$continent)),
+                   multiple = TRUE
+                 ),
+                 selectInput(
+                   inputId = "status",
+                   label = "Status:",
+                   choices = sort(unique(world_data$Status)),
+                   multiple = TRUE
+                 )
+               )
+        ),
+        column(9,
+               tabsetPanel(
+                 tabPanel("Ungrouped",
+                          wellPanel(
+                            DT::dataTableOutput("world_data")
+                          )    
+                 )
+               )
+               
+        )
+    )
+)

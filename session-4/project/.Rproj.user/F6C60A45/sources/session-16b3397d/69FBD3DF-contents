@@ -1,0 +1,16 @@
+library(DT)
+library(readr)
+library(dplyr)
+
+start_world_data <- readRDS("data/world_data.RDS")
+
+world_data <- start_world_data %>%
+  select(-iso_a2) %>%
+  filter(!is.na(pop)) %>%
+  mutate(
+    Status = ifelse(!is.na(pop) & !is.na(lifeExp) & !is.na(gdpPercap), "Complete", "Incomplete"),
+    Pop_Density = round(pop / area_km2, 2),
+    area_km2 = round(area_km2, 2),
+    lifeExp = round(lifeExp, 2),
+    gdpPercap = round(gdpPercap, 2)
+  )
